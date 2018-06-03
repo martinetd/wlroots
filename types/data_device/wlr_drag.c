@@ -44,7 +44,7 @@ static void drag_set_focus(struct wlr_drag *drag,
 
 	if (!drag->source &&
 			wl_resource_get_client(surface->resource) !=
-			wl_resource_get_client(drag->seat_client->wl_resource)) {
+			wl_client_for_wlr_seat_client(drag->seat_client)) {
 		return;
 	}
 

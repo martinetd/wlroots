@@ -13,11 +13,11 @@
  * managed by wlr_seat; some may be NULL.
  */
 struct wlr_seat_client {
-	struct wl_resource *wl_resource;
 	struct wl_client *client;
 	struct wlr_seat *seat;
 
 	// lists of wl_resource
+	struct wl_list binds;
 	struct wl_list pointers;
 	struct wl_list keyboards;
 	struct wl_list touches;
@@ -539,5 +539,7 @@ bool wlr_seat_validate_grab_serial(struct wlr_seat *seat, uint32_t serial);
 
 struct wlr_seat_client *wlr_seat_client_from_resource(
 		struct wl_resource *resource);
+struct wl_client *wl_client_for_wlr_seat_client(
+		struct wlr_seat_client *wlr_seat_client);
 
 #endif
