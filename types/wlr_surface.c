@@ -1038,7 +1038,7 @@ static void surface_for_each_surface(struct wlr_surface *surface, int x, int y,
 	iterator(surface, x, y, user_data);
 
 	struct wlr_subsurface *subsurface;
-	wl_list_for_each(subsurface, &surface->subsurfaces, parent_link) {
+	wl_list_for_each_reverse(subsurface, &surface->subsurfaces, parent_link) {
 		struct wlr_surface_state *state = subsurface->surface->current;
 		int sx = state->subsurface_position.x;
 		int sy = state->subsurface_position.y;
